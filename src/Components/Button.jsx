@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 
-function Button({color, text}) {
+function Button({color, text, displayTask}) {
   return (
-      <button className="btn" style={{backgroundColor: color}}>
+      <button className="btn" style={{backgroundColor: color}} onClick={displayTask}>
         {text}
       </button>
   )

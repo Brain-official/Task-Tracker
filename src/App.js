@@ -9,6 +9,8 @@ import AddTask from './Components/AddTask';
 
 function App() {
 
+  const [showAddTasks, setShowAddTasks] = useState(false)
+
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -35,12 +37,19 @@ function App() {
 
 
 
+  //Shows the AddTask section
+  const showTask = () => {
+    setShowAddTasks(!showAddTasks)
+  }
+
+
+
   //Adds Task to the Task tracker as objects
   const addTask = (task)=> {
     const id = Math.floor(Math.random() * 10000) + 1;
     const newTask = { id, ...task };
     setTasks([...tasks, newTask])
-    console.log(id)
+   
   }
 
 
@@ -60,8 +69,8 @@ function App() {
 
   return (
     <div className="container">
-      <Header />
-      <AddTask onAdd={ addTask} />
+      <Header displayTask={showTask} showAdd={showAddTasks} />
+      {showAddTasks && <AddTask onAdd={ addTask} />}
       {tasks.length <= 0 ?
         "No Task left" :
         <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />

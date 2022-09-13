@@ -4,13 +4,12 @@ import Button from "./Button"
 
 
 
-const Header = (props) => {
+const Header = ({title, displayTask, showAdd}) => {
   return (
-      <div className="header">
-          <h1>{props.title}</h1>
-          <Button text="Add" />
-         
-      </div>
+    <div className="header">
+        <h1>{title}</h1>
+        <Button color={showAdd? "red" : "green"} text={showAdd ? "Close" : "Add"} displayTask={ displayTask} />
+    </div>
   )
 }
 
